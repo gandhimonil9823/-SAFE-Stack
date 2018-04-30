@@ -66,12 +66,11 @@ let show = function
 
 let view (model : Model) (dispatch : Msg -> unit) =
   div []
-    [ h1 [] [ str "SAFE Template" ]
-      p  [] [ str "The initial counter is fetched from server" ]
-      p  [] [ str "Press buttons to manipulate counter:" ]
-      button [ OnClick (fun _ -> dispatch Decrement) ] [ str "-" ]
-      div [] [ str (show model) ]
-      button [ OnClick (fun _ -> dispatch Increment) ] [ str "+" ]
+    [ h1 [] [ str "Collaborative Text Editor" ]
+      p  [] [ str "Create a new document:" ]
+      button [ OnClick (fun _ -> dispatch Decrement) ] [ str "Create" ]
+      p  [] [ str "Open an existing document:" ]
+      button [ OnClick (fun _ -> dispatch Increment) ] [ str "Join" ]
       safeComponents ]
 
   
