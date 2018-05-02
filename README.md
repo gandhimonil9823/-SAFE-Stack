@@ -6,12 +6,14 @@ An Online Text Edit Application using the SAFE stack where multiple people can c
 
 Follow the instructions on this page to setup the SAFE environment: https://safe-stack.github.io/docs/quickstart/
 
-                                        Build Instructions:
+Build Instructions:
 
 To build the application run : build.cmd run(Windows) run ./build.sh run(Linux / OSX)
 
                                         Week 2 Update
-
+                                        
+                                        
+                                        
 
 
 
