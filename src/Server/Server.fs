@@ -1,11 +1,13 @@
-﻿open System.IO
+﻿module Server
+
+open System.IO
 open System.Net
 
 open Suave
 open Suave.Operators
-
-
-open Shared
+open Suave.Filters
+open Suave.Successful
+open Suave.ServerErrors
 
 let clientPath = Path.Combine("..","Client") |> Path.GetFullPath 
 let port = 8085us
@@ -15,22 +17,21 @@ let config =
       homeFolder = Some clientPath
       bindings = [ HttpBinding.create HTTP (IPAddress.Parse "0.0.0.0") port ] }
 
-let getInitCounter () : Async<Counter> = async { return 42 }
-
 let init : WebPart = 
   Filters.path "/api/init" >=>
-  fun ctx ->
+  fun x ->
     async {
-      let! counter = getInitCounter()
-      return! Successful.OK (string counter) ctx
+      return! OK "" x
     }
 
-let webPart =
+let app : WebPart =
   choose [
+    GET >=> path "/create" >=> OK "Hello World"      
+    GET >=> path "/join" >=> OK "" 
     init
     Filters.path "/" >=> Files.browseFileHome "index.html"
     Files.browseHome
-    RequestErrors.NOT_FOUND "Not found!"
+    RequestErrors.NOT_FOUND "Page not found"
   ]
 
-startWebServer config webPart
+startWebServer config app
