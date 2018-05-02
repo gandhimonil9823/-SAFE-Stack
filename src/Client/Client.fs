@@ -5,39 +5,37 @@ open Elmish.React
 
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.PowerPack.Fetch
+open Fable.Import.Browser
 
-open Shared
-
-
-
-type Model = Counter option
-
+type Model = Some
 type Msg =
-| Increment
-| Decrement
-| Init of Result<Counter, exn>
+| Create
+| Join
 
+// testing Fable.Import.Browser for url navigation
+let [<Literal>] internal NavigatedEvent = "NavigatedEvent"
 
+let goToCreate:Model * Cmd<_> =
+  // use `let =` to randomize url
+  Some, [fun _ -> history.pushState((), "", "/create.html") // works with refresh, doesn't maintain URL
+                  let ev = document.createEvent_CustomEvent()
+                  ev.initCustomEvent (NavigatedEvent, true, true, obj())
+                  window.dispatchEvent ev
+                  |> ignore ]
 
-let init () : Model * Cmd<Msg> =
-  let model = None
-  let cmd =
-    Cmd.ofPromise 
-      (fetchAs<int> "/api/init") 
-      [] 
-      (Ok >> Init) 
-      (Error >> Init)
-  model, cmd
+let goToJoin : Model * Cmd<_> =
+  // get url from view component(text form w/ button && POST?)
+  Some, [fun _ -> history.replaceState((), "", "/join")]
 
-let update (msg : Msg) (model : Model) : Model * Cmd<Msg> =
-  let model' =
-    match model,  msg with
-    | Some x, Increment -> Some (x + 1)
-    | Some x, Decrement -> Some (x - 1)
-    | None, Init (Ok x) -> Some x
-    | _ -> None
-  model', Cmd.none
+// end Fable.Import.Browser test
+
+let init() : Model * Cmd<_> = Some, Cmd.none
+
+let update (msg : Msg) (model : Model) : Model * Cmd<_> =
+  match msg with
+  | Create -> goToCreate
+  | Join -> goToJoin
+  | _ -> Some, Cmd.none
 
 let safeComponents =
   let intersperse sep ls =
@@ -60,17 +58,13 @@ let safeComponents =
       str " powered by: "
       components ]
 
-let show = function
-| Some x -> string x
-| None -> "Loading..."
-
 let view (model : Model) (dispatch : Msg -> unit) =
   div []
     [ h1 [] [ str "Collaborative Text Editor" ]
       p  [] [ str "Create a new document:" ]
-      button [ OnClick (fun _ -> dispatch Decrement) ] [ str "Create" ]
+      button [ OnClick (fun _ -> dispatch Create) ] [ str "Create" ]
       p  [] [ str "Open an existing document:" ]
-      button [ OnClick (fun _ -> dispatch Increment) ] [ str "Join" ]
+      button [ OnClick (fun _ -> dispatch Join) ] [ str "Join" ]
       safeComponents ]
 
   
