@@ -1,4 +1,4 @@
-                                        CollabrativeTextEditor
+                                        CollaborativeTextEditor
 
 An Online Text Edit Application using the SAFE stack where multiple people can collaborate at the same time.
 
