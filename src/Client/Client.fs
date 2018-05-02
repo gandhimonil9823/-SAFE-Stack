@@ -62,9 +62,16 @@ let view (model : Model) (dispatch : Msg -> unit) =
   div []
     [ h1 [] [ str "Collaborative Text Editor" ]
       p  [] [ str "Create a new document:" ]
-      button [ OnClick (fun _ -> dispatch Create) ] [ str "Create" ]
-      p  [] [ str "Open an existing document:" ]
-      button [ OnClick (fun _ -> dispatch Join) ] [ str "Join" ]
+
+      // buttons tested for Fable.Import.Browser functions
+      // place after corresponding p after uncomment
+      // button [ OnClick (fun _ -> dispatch Create) ] [ str "Create" ]
+      // button [ OnClick (fun _ -> dispatch Join) ] [ str "Join" ]
+
+      // try form rather than button to route to page
+      form [ Action "./create.html" ] [ button [] [ str "Create" ] ]
+      p  [] [ str "Open an existing document:" ]      
+      form [ Action "./join.html" ] [ button [] [ str "Join" ] ]
       safeComponents ]
 
   

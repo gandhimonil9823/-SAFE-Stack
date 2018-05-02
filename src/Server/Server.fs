@@ -14,24 +14,29 @@ let port = 8085us
 
 let config =
   { defaultConfig with 
-      homeFolder = Some clientPath
+      // homeFolder = Some clientPath // testing Suave.Files paths
       bindings = [ HttpBinding.create HTTP (IPAddress.Parse "0.0.0.0") port ] }
 
-let init : WebPart = 
-  Filters.path "/api/init" >=>
+let start : WebPart = 
+  //Filters.path "/api/init" >=> // not necessary?
   fun x ->
     async {
       return! OK "" x
     }
 
 let app : WebPart =
-  choose [
-    GET >=> path "/create" >=> OK "Hello World"      
-    GET >=> path "/join" >=> OK "" 
-    init
-    Filters.path "/" >=> Files.browseFileHome "index.html"
-    Files.browseHome
-    RequestErrors.NOT_FOUND "Page not found"
-  ]
+  choose
+    // not sure if app is properly catching urls
+    // currently routing via React elements
+    [ GET >=> path "/create" >=> OK "Hello World"      
+      GET >=> path "/join" >=> OK "" 
+      GET >=> path "/" >=> SERVICE_UNAVAILABLE "" 
+      RequestErrors.NOT_FOUND "Page not found"
+    ]      
+
+    // needed?
+    // Filters.path "/" >=> Files.browseFileHome "index.html"
+    // Files.browseHome
+    // RequestErrors.NOT_FOUND "Not found!"  
 
 startWebServer config app
