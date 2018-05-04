@@ -37,6 +37,7 @@ let update (msg : Msg) (model : Model) : Model * Cmd<_> =
   | Join -> goToJoin
   | _ -> Some, Cmd.none
 
+
 let safeComponents =
   let intersperse sep ls =
     List.foldBack (fun x -> function
@@ -54,9 +55,10 @@ let safeComponents =
     |> span [ ]
 
   p [ ]
-    [ strong [] [ str "SAFE Template" ]
+    [ strong [] [ str "SAFE" ]
       str " powered by: "
       components ]
+
 
 let view (model : Model) (dispatch : Msg -> unit) =
   div []
