@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="create.html">
+  <MonoDevelop.Ide.Workbench ActiveDocument="app.css">
     <Files>
-      <File FileName="Client.fs" Line="42" Column="37" />
+      <File FileName="Client.fs" Line="61" Column="7" />
       <File FileName="join.html" Line="11" Column="8" />
-      <File FileName="create.html" Line="21" Column="8" />
+      <File FileName="create.html" Line="17" Column="51" />
+      <File FileName="app.css" Line="2" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
