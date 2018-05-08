@@ -72,8 +72,10 @@ let view (model : Model) (dispatch : Msg -> unit) =
 
       // try form rather than button to route to page
       form [ Action "./create.html" ] [ button [] [ str "Create" ] ]
-      p  [] [ str "Open an existing document:" ]      
-      form [ Action "./join.html" ] [ button [] [ str "Join" ] ]
+      // only really need a button to create a page
+      // p  [] [ str "Open an existing document:" ]      
+      //
+      // form [ Action "./join.html" ] [ button [] [ str "Join" ] ]
       safeComponents ]
 
   
