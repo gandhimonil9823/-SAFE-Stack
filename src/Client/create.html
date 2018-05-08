@@ -5,43 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Online Collaborative Text Editor</title>
+    <title>SAFE Collab</title>
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 </head>
 <body>
     <header class="header">
-        <h1 class="header__h1">Create Page</h1>
+        <h1 class="header__h1">Page created! (Share the above URL)</h1>
     </header>
     <div class="doc">
         <div class="doc__background-ribbon"></div>
         <div id="doc" class="doc__text-editor"></div>
     </div>
-    <script>
-    function getUniqueId () {
-        return 'private-' + Math.random().toString(36).substr(2, 9);
-      }
-    
-      // function to get a query param's value
-      function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-      };
-    
-         window.onload =  function () {
-          var doc = document.getElementById('doc');
-          doc.contentEditable = true;
-          doc.focus();
-    
-          var id = getUrlParameter('id');
-          if (!id) {
-            location.search = location.search
-              ? '&id=' + getUniqueId() : 'id=' + getUniqueId();
-            return;
-          }
-        }()
-    </script>
-    <!-- <script src="app.js"></script> -->
+    <script src="app.js"></script>
+    <div>
+        <form action="./index.html">
+            <input type="submit" value="Go back home">
+        </form>
+    </div>
 </body>
 </html>
