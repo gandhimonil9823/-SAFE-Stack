@@ -17,24 +17,76 @@
   href="http://www.w3.org/Talks/Tools/Slidy/print.css" />
 </head>
 <body>
+
   <div class="slide cover"> 
     <br clear="all" />            
     <h1>SAFE Project Using F#</h1> 
     <h2>By Cromwell Cutaran, Monil Gandhi, Kristie Kwak, Ivana Yu</h2>
   </div> 
+
   <div class="slide1">
-    <h1>Intro to F#</h1> 
+    <h1>Overview of F#</h1> 
     <ul class="incremental"> 
     <li>Not a pure functional programming language</li> 
-    <li>...</li> 
-    <li>...</li> 
+    <li>Like Scala, can treat functions as values, have curried functions,
+        etc</li> 
+    <li>mutable keyword to change a mutable variable's value</li> 
+    </ul> 
+  </div>
+
+  <div class="slide2">
+    <h1>Pros of F#</h1> 
+    <ul class="incremental"> 
+    <li>Since it's still a functional programming language, supports immutable 
+        data structures</li>
+    <li>Concise syntax</li> 
+    <li>Pipe operators make code more readable because you don't have to
+        store intermediate results</li> 
+    <li>There is a Record data types (similar to a Java class but records are 
+        comparable)
+       <pre class="incremental">
+       type MyRecord = {
+          X: int;
+          Y: int;
+          Z: int
+       }
+       let myRecord1 = { X = 1; Y = 2; Z = 3; }
+       </pre>
+    </li> 
+    <li>Pattern matching feature 
+       <pre class="incremental"> 
+          match expression with
+             | pattern [ when condition ] -> result-expression
+             ...
+       </pre>
+       "Each pattern acts as a rule for transforming input in some way.
+       In the match expression, each pattern is examined in turn to see if the
+       input data is compatible with the pattern"
+    </li>
   </ul> 
- 
-  <p class="incremental">which is marked up as follows:</p> 
- 
-  <pre class="incremental"> 
-   ... 
-  </pre> 
+  </div>
+
+  <div class="slide3">
+    <h1>More Pros</h1> 
+    <ul class="incremental"> 
+    <li>Easy to create new types</li>
+    <li>Good for asynchronous workflows 
+        <pre class="incremental">
+          async { expression }
+        </pre>
+        where expression is executed asynchronously when you call a starting
+        function 
+    </li>
+    <li>Good IDE support in Visual Studio</li> 
+    <li>F# runs on the Common Language Runtime (CLR) so there's access
+        to the .NET Framework</li> 
+    </ul> 
+  </div>
+
+  <div class="slide4">
+    <h1>Cons of F#</h1> 
+    <ul class="incremental"> 
+    </ul> 
   </div>
 
 </body>
