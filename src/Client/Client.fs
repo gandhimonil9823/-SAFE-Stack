@@ -23,10 +23,6 @@ let goToCreate:Model * Cmd<_> =
                   window.dispatchEvent ev
                   |> ignore ]
 
-let goToJoin : Model * Cmd<_> =
-  // get url from view component(text form w/ button && POST?)
-  Some, [fun _ -> history.replaceState((), "", "/join")]
-
 // end Fable.Import.Browser test
 
 let init() : Model * Cmd<_> = Some, Cmd.none
@@ -34,9 +30,7 @@ let init() : Model * Cmd<_> = Some, Cmd.none
 let update (msg : Msg) (model : Model) : Model * Cmd<_> =
   match msg with
   | Create -> goToCreate
-  | Join -> goToJoin
   | _ -> Some, Cmd.none
-
 
 let safeComponents =
   let intersperse sep ls =
@@ -59,23 +53,17 @@ let safeComponents =
       str " powered by: "
       components ]
 
-
 let view (model : Model) (dispatch : Msg -> unit) =
   div []
     [ h1 [] [ str "Collaborative Text Editor" ]
       p  [] [ str "Create a new document:" ]
 
       // buttons tested for Fable.Import.Browser functions
-      // place after corresponding p after uncomment
+      // only really need a button to create a page (ommitting join.html use case)
       // button [ OnClick (fun _ -> dispatch Create) ] [ str "Create" ]
-      // button [ OnClick (fun _ -> dispatch Join) ] [ str "Join" ]
 
       // try form rather than button to route to page
       form [ Action "./create.html" ] [ button [] [ str "Create" ] ]
-      // only really need a button to create a page
-      // p  [] [ str "Open an existing document:" ]      
-      //
-      // form [ Action "./join.html" ] [ button [] [ str "Join" ] ]
       safeComponents ]
 
   

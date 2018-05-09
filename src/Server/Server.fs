@@ -29,14 +29,8 @@ let app : WebPart =
     // not sure if app is properly catching urls
     // currently routing via React elements
     [ GET >=> path "/create" >=> OK "Hello World"      
-      GET >=> path "/join" >=> OK "" 
       GET >=> path "/" >=> SERVICE_UNAVAILABLE "" 
       RequestErrors.NOT_FOUND "Page not found"
     ]      
-
-    // needed?
-    // Filters.path "/" >=> Files.browseFileHome "index.html"
-    // Files.browseHome
-    // RequestErrors.NOT_FOUND "Not found!"  
 
 startWebServer config app
