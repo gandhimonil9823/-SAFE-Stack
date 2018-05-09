@@ -13,7 +13,13 @@ To build the application run : build.cmd run(Windows) run ./build.sh run(Linux /
                                         Week 2 Update
                                         
    ![Screenshot](Week2.png)
-                                        
+   
+   
+   
+                                        Week 3 Update
+                                       
+
+   ![Screenshot](Week3.png)                                     
                                         
                                         
 

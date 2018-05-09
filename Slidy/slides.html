@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+<head> 
+  <title>SAFE Project</title> 
+  <meta name="copyright" 
+   content="Copyright &#169; 2005 your copyright notice" /> 
+  <link rel="stylesheet" type="text/css" media="screen, projection, print" 
+   href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" /> 
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js" 
+   charset="utf-8" type="text/javascript"></script> 
+  <style type="text/css"> 
+    <!-- your custom style rules --> 
+  </style> 
+  <link rel="stylesheet" type="text/css" media="print" 
+  href="http://www.w3.org/Talks/Tools/Slidy/print.css" />
+</head>
+<body>
+
+  <div class="slide cover"> 
+    <br clear="all" />            
+    <h1>SAFE Project Using F#</h1> 
+    <h2>By Cromwell Cutaran, Monil Gandhi, Kristie Kwak, Ivana Yu</h2>
+  </div> 
+
+  <div class="slide1">
+    <h1>Overview of F#</h1> 
+    <ul class="incremental"> 
+    <li>Not a pure functional programming language</li> 
+    <li>Like Scala, can treat functions as values, have curried functions,
+        etc</li> 
+    <li>mutable keyword to change a mutable variable's value</li> 
+    </ul> 
+  </div>
+
+  <div class="slide2">
+    <h1>Pros of F#</h1> 
+    <ul class="incremental"> 
+    <li>Since it's still a functional programming language, supports immutable 
+        data structures</li>
+    <li>Concise syntax</li> 
+    <li>Pipe operators make code more readable because you don't have to
+        store intermediate results</li> 
+    <li>There is a Record data types (similar to a Java class but records are 
+        comparable)
+       <pre class="incremental">
+       type MyRecord = {
+          X: int;
+          Y: int;
+          Z: int
+       }
+       let myRecord1 = { X = 1; Y = 2; Z = 3; }
+       </pre>
+    </li> 
+    <li>Pattern matching feature 
+       <pre class="incremental"> 
+          match expression with
+             | pattern [ when condition ] -> result-expression
+             ...
+       </pre>
+       "Each pattern acts as a rule for transforming input in some way.
+       In the match expression, each pattern is examined in turn to see if the
+       input data is compatible with the pattern"
+    </li>
+  </ul> 
+  </div>
+
+  <div class="slide3">
+    <h1>More Pros</h1> 
+    <ul class="incremental"> 
+    <li>Easy to create new types</li>
+    <li>Good for asynchronous workflows 
+        <pre class="incremental">
+          async { expression }
+        </pre>
+        where expression is executed asynchronously when you call a starting
+        function 
+    </li>
+    <li>Good IDE support in Visual Studio</li> 
+    <li>F# runs on the Common Language Runtime (CLR) so there's access
+        to the .NET Framework</li> 
+    <li>SAFE uses Fable, which is an F#-to-Javascript compiler. Lets you
+        share code between client and server
+    </li>
+    </ul> 
+  </div>
+
+  <div class="slide4">
+    <h1>Cons of F#</h1> 
+    <ul class="incremental"> 
+    </ul> 
+  </div>
+
+</body>
+</html>
