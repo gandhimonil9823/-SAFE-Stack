@@ -1,49 +1,37 @@
 body {
-    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
-    font-size: 20px;
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
     line-height: 20px;
     margin: 20;
     padding: 0;
-    background-color: #F6F6F6;
+    background: lightblue;
+
 }
 
 .header {
-  margin-top: 80px;
-  font-size: 22px;
-  font-weight: bold;
-  display: block;
+  height: 80px;
+  display: flex;
   align-items: center;
 }
 
 .header__h1 {
-  text-align: center;
-  margin: 40px 80px;
-  padding: 20px 10px;
-  color: #141414;
+  margin: 20px;
+  padding: 10px;
+  color: #424242;
 }
 
 .doc .doc__background-ribbon {
-    height: 160px;
+    height: 200px;
+    background: #424242;
 }
 
 .doc .doc__text-editor {
-  width: 67%;
-  padding: 60pt 60pt;
+  width: 80%;
+  padding: 40px 28px;
   min-height: 500px;
   background: #fff;
   margin: 0 auto;
   transform: translateY(-150px);
-  border: 1px solid #DDDDDD;
-  box-shadow: 2px 2px 3px #DDDDDD;
 }
 
-input[type=submit] {
-  position: absolute;
-  top: 5%;
-  left: 3%;
-  padding: 10px 20px;
-  font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
-  color: #FFFFFF;
-  background-color: #357ca3;
-  border: 1px solid #2e7196;
-}

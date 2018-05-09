@@ -6,7 +6,6 @@ open Elmish.React
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Import.Browser
-open Fable.PowerPack.Keyboard
 
 type Model = Some
 type Msg =
@@ -25,47 +24,6 @@ let goToCreate:Model * Cmd<_> =
                   |> ignore ]
 
 // end Fable.Import.Browser test
-
-//Some CSS
-let title =
-    Style [
-        Padding 25
-        TextAlign "center"
-        unbox ("font-size","48px")
-        unbox ("margin", "100px 50px")
-        unbox ("font-family","Open Sans")
-        unbox ("line-height","10px")
-    ]
-
-let text =
-    Style [
-        Margin 20
-        Padding 0
-        TextAlign "center"
-        unbox ("font-size","20px")
-        unbox ("color","#444444")
-        unbox ("font-family","Open Sans")
-    ]
-
-let credit =
-    Style [
-        Margin 100
-        Padding 10
-        TextAlign "center"
-        unbox ("font-size","14px")
-        unbox ("color","#999999")
-        unbox ("font-family","Open Sans")
-    ]
-
-let createb =
-    Style [
-        Height 40
-        unbox ("padding","0px 40px")
-        unbox ("font-size","16px")
-        unbox ("background","#357ca3")
-        unbox ("color","#FFFFFF")
-        unbox ("font-family","Open Sans")
-    ]
 
 let init() : Model * Cmd<_> = Some, Cmd.none
 
@@ -90,22 +48,22 @@ let safeComponents =
     |> intersperse (str ", ")
     |> span [ ]
 
-  p [credit]
+  p [ ]
     [ strong [] [ str "SAFE" ]
       str " powered by: "
       components ]
 
 let view (model : Model) (dispatch : Msg -> unit) =
-  div [ Style [ VerticalAlign "middle"; TextAlign "center" ] ]
-    [ h1 [title] [ str "Collaborative Text Editor" ]
-      p  [text] [ str "Create a new document:" ]
+  div []
+    [ h1 [] [ str "Collaborative Text Editor" ]
+      p  [] [ str "Create a new document:" ]
 
       // buttons tested for Fable.Import.Browser functions
       // only really need a button to create a page (ommitting join.html use case)
       // button [ OnClick (fun _ -> dispatch Create) ] [ str "Create" ]
 
       // try form rather than button to route to page
-      form [ Action "./create.html" ] [ button [createb] [ str "Create" ] ]
+      form [ Action "./create.html" ] [ button [] [ str "Create" ] ]
       safeComponents ]
 
   

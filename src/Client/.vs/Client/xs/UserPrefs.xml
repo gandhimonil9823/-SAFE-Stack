@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="../Server/Server.fs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="index.html">
     <Files>
       <File FileName="Client.fs" Line="83" Column="7" />
       <File FileName="join.html" Line="11" Column="8" />
-      <File FileName="create.html" Line="1" Column="1" />
-      <File FileName="app.js" Line="1" Column="1" />
-      <File FileName="index.html" Line="25" Column="39" />
-      <File FileName="../Server/Server.fs" Line="1" Column="1" />
+      <File FileName="create.html" Line="14" Column="38" />
+      <File FileName="app.js" Line="25" Column="13" />
+      <File FileName="index.html" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

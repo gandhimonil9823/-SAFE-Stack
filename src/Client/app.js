@@ -3,10 +3,10 @@
 // a unique random key generator
 function getUniqueId () {
   // url for private channel
-  // return 'private-' + Math.random().toString(36).substr(2, 9);
+  return 'private-' + Math.random().toString(36).substr(2, 9);
 
   // url for public channel
-  return Math.random().toString(36).substr(2, 9);
+  // return Math.random().toString(36).substr(2, 9);
 }
 
 // function to get a query param's value
@@ -26,6 +26,7 @@ function getUrlParameter(name) {
   var id = getUrlParameter('id');
   if (!id) {
     location.search = location.search
+
       ? '&id=' + getUniqueId() : 'id=' + getUniqueId();
     return;
   }
@@ -37,21 +38,27 @@ function getUrlParameter(name) {
 
     // subscribe to the changes via Pusher
     var pusher = new Pusher("a72e95caf97b5941ca0c",
-                            {cluster:"us2"});
+                            {cluster:"us2",
+                             authEndpoint:"http://localhost:8081/pusher/auth"});
+
+                            // ^try new authEndpoint (different port)
     var channel = pusher.subscribe(id);
-    channel.bind('text-edit', function(html) {
+    channel.bind('client-text-edit', function(html) {
       // save the current position
       var currentCursorPosition = getCaretCharacterOffsetWithin(doc);
       doc.innerHTML = html;
       // set the previous cursor position
       setCaretPosition(doc, currentCursorPosition);
+      console.log(html);
     });
     channel.bind('pusher:subscription_succeeded', function() {
       resolve(channel);
     });
   }).then(function (channel) {
-    function triggerChange (e) {
-      channel.trigger('text-edit', e.target.innerHTML);
+    function triggerChange (test) {
+      // debugger;
+      channel.trigger('client-text-edit', test.target.innerHTML);
+      
     }
 
     doc.addEventListener('input', triggerChange);
